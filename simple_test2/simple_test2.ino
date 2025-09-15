@@ -54,6 +54,9 @@ void loop()
     Serial.print(" PREC=");
     Serial.print(gps.hdop() == TinyGPS::GPS_INVALID_HDOP ? 0 : gps.hdop());
   }
+
+  //ok so this is second program file on this
+  
   
   gps.stats(&chars, &sentences, &failed);
   Serial.print(" CHARS=");
