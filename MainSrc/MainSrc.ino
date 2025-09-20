@@ -6,11 +6,13 @@
 #include "Button.h"
 #include "Led.h"
 #include "LiquidCrystal_PCF8574.h"
+#include "PIRSensor.h"
 
 
 BatteryMonitor battery(A0,A1,A2);
 Button mainbutton(1);
 Led LCD_display(2);
+PIRSensor room1sensor(3);
 
 LiquidCrystal_PCF8574 lcd(0x27);  // set the LCD address to 0x27 for a 16 chars and 2 line display
 void setup()
@@ -27,6 +29,8 @@ void setup()
   else{
     Serial.print("Lcd not found");
   }
+  room1sensor.begin();
+  pinMode(3, INPUT);
 }
 
 void loop()
@@ -48,7 +52,13 @@ void loop()
   delay(1000);
   lcd.setBacklight(100);
   lcd.home();
-  lcd.print("Hello David");
+  //lcd.print("Hello David");
+  if(room1sensor.isMotionDetected()){
+    lcd.print("person detected");
+  }
+  else{
+    lcd.clear();
+  }
 
 
 
