@@ -48,7 +48,7 @@ void loop()
   delay(1000);
   lcd.setBacklight(100);
   lcd.home();
-  lcd.print("Hello world");
+  lcd.print("Hello David");
 
 
 
